@@ -1,0 +1,280 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Happy Birthday, Zinnira!</title>
+<style>
+/* Body & Background */
+body {
+  font-family: 'Segoe UI Emoji', 'Apple Color Emoji', 'Noto Color Emoji', sans-serif;
+  margin: 0;
+  overflow-x: hidden;
+  text-align: center;
+  color: #fff;
+  height: 100vh;
+  background: linear-gradient(120deg, #ffdde1, #ee9ca7, #ffe1e8);
+  background-size: 400% 400%;
+  animation: gradientMove 15s ease infinite, pulse 2s ease-in-out infinite alternate;
+}
+@keyframes gradientMove {0%{background-position:0% 50%;}50%{background-position:100% 50%;}100%{background-position:0% 50%;}}
+@keyframes pulse {0%{transform:scale(1);filter:brightness(1);}50%{transform:scale(1.02);filter:brightness(1.2);}100%{transform:scale(1);filter:brightness(1);}}
+
+/* Header */
+h1 {
+  font-size: clamp(2em,6vw,3em);
+  margin-bottom: 15px;
+  color: #ff6f91;
+  animation: glow 2s infinite alternate;
+  text-shadow: 0 0 10px #ff6f91,0 0 20px #ff6f91;
+}
+@keyframes glow {from{text-shadow:0 0 10px #ff6f91,0 0 20px #ff6f91;}to{text-shadow:0 0 20px #ff9ca7,0 0 30px #ff9ca7;}}
+
+/* Messages */
+#message {
+  font-size: clamp(1em,4vw,1.4em);
+  margin: 15px 5px;
+  min-height: 120px;
+  max-width: 90%;
+  transition: opacity 1.5s ease;
+  line-height: 1.5em;
+}
+
+/* Start Button */
+#startScreen {
+  position: fixed;
+  top:0; left:0;
+  width:100%; height:100%;
+  background:#ffdde1;
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+  justify-content:center;
+  z-index:1000;
+}
+#startButton {
+  font-size: clamp(1em,4vw,1.5em);
+  padding: 15px 30px;
+  border:none;
+  border-radius:12px;
+  background:#ff6f91;
+  color:#fff;
+  cursor:pointer;
+  animation: glow 2s infinite alternate;
+}
+
+/* Duaa Section */
+#duaaSection {
+  display: none;
+  opacity: 0;
+  background: linear-gradient(120deg, #1e3c72, #2a5298);
+  height: 100vh;
+  width: 100%;
+  position: absolute;
+  top:0; left:0;
+  display:flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  color: #fff;
+  z-index: 10;
+  overflow: hidden;
+  transition: opacity 2s ease;
+  padding: 10px;
+  box-sizing: border-box;
+}
+#duaaMessage {
+  font-size: clamp(1em,4vw,1.5em);
+  max-width: 95%;
+  line-height: 1.6em;
+  text-align: center;
+  animation: duaaGlow 3s ease-in-out infinite alternate;
+}
+@keyframes duaaGlow {0%{text-shadow:0 0 10px #fff,0 0 20px #fff;color:#fefefe;}50%{text-shadow:0 0 20px #ffd700,0 0 30px #ffd700;color:#fffae6;}100%{text-shadow:0 0 15px #ffb6c1,0 0 25px #ffb6c1;color:#fff0f5;}}
+
+/* Signature */
+.signature {
+  margin-top:30px;
+  font-size: clamp(18px,4vw,22px);
+  font-weight:bold;
+  letter-spacing:3px;
+  color:#ff4d6d;
+  text-shadow:0 0 8px rgba(255,77,109,0.6);
+  animation: glow 2s infinite alternate, heartbeat 1.8s infinite;
+}
+@keyframes heartbeat {0%{transform:scale(1);}25%{transform:scale(1.07);}50%{transform:scale(1);}75%{transform:scale(1.07);}100%{transform:scale(1);}}
+
+/* Floating emojis */
+.floating {position:absolute;top:-50px;font-size:1.5em;opacity:0.8;animation:fallZoom linear infinite;}
+@keyframes fallZoom {0%{transform:translateY(0) scale(1) rotate(0deg);opacity:1;}50%{transform:translateY(50vh) scale(1.2) rotate(180deg);opacity:0.9;}100%{transform:translateY(110vh) scale(1.4) rotate(360deg);opacity:0;}}
+
+/* Stars */
+.star {position:absolute;color:#fff;font-size:12px;opacity:0.8;animation:starFall linear infinite;}
+@keyframes starFall {0%{transform:translateY(0) rotate(0deg);opacity:1;}100%{transform:translateY(110vh) rotate(360deg);opacity:0;}}
+
+/* Sparkles */
+.sparkle {position:absolute;width:6px;height:6px;background:radial-gradient(circle,#fff,#ffd700,#ff69b4);border-radius:50%;pointer-events:none;opacity:0.9;animation:sparkleFade 0.8s forwards; z-index:20;}
+@keyframes sparkleFade {0%{transform:scale(1);opacity:1;}100%{transform:scale(2.5);opacity:0;}}
+
+/* Confetti */
+.confetti {position:absolute;width:8px;height:8px;background-color:red;opacity:0.9;border-radius:50%;z-index:25;animation:confettiFall linear forwards;}
+@keyframes confettiFall {0%{transform:translateY(0) rotate(0deg);opacity:1;}100%{transform:translateY(100vh) rotate(360deg);opacity:0;}}
+
+/* Love Trail */
+.loveTrail {position:absolute;font-size:clamp(18px,4vw,24px);color:#ff4d6d;opacity:0.9;pointer-events:none;animation:loveFloat 3s forwards; z-index:30;}
+@keyframes loveFloat {0%{transform:translateY(0) scale(1);opacity:1;}50%{transform:translateY(-30vh) scale(1.2);opacity:0.8;}100%{transform:translateY(-60vh) scale(1.4);opacity:0;}}
+
+</style>
+</head>
+<body>
+
+<div id="startScreen">
+  <h1>Happy Birthday, Zinnira! (Zero) 💛</h1>
+  <button id="startButton">Click to Start 🎶</button>
+</div>
+
+<h1>Happy Birthday, Zinnira! (Zero) 💛</h1>
+<div id="message"></div>
+
+<audio id="dhunAudio" loop>
+  <source src="dhun.mp3" type="audio/mpeg">
+</audio>
+
+<div id="duaaSection">
+  <h1>💛 A Special Duaa for You 💛</h1>
+  <div id="duaaMessage">
+    May Allah bless you with endless happiness, health, and success.<br>
+    May your heart always be filled with peace and clarity.<br>
+    May all your efforts bring meaningful results and protection in every step of your life, Zinnira.<br><br>
+    آمین 🤲
+    <p class="signature">— WARDA (ZOMBIE) ♡✨</p>
+  </div>
+</div>
+
+<script>
+const messages = [
+  "Even after all these years, our friendship still holds a special place in my life.",
+  "We shared laughter, challenges, and moments that shaped us — memories that stay.",
+  "I jokingly called you 'Zero', but in reality, you’ve always been invaluable.",
+  "Though our paths crossed late in school, your presence left a lasting impression.",
+  "Distance hasn’t lessened the respect and care I have for you.",
+  "You’ve been a friend who genuinely mattered, thoughtful and reliable.",
+  "I hope this year brings you clarity, success, and moments worth remembering.",
+  "Thank you for being consistent, supportive, and unforgettable, Zero.",
+  "Here’s to your growth, happiness, and everything you work for, Zinnira."
+];
+
+let index = 0;
+const messageDiv = document.getElementById('message');
+const duaaSection = document.getElementById('duaaSection');
+const dhunAudio = document.getElementById('dhunAudio');
+const startButton = document.getElementById('startButton');
+const startScreen = document.getElementById('startScreen');
+
+function showNextMessage() {
+  if(index < messages.length){
+    let msg = messages[index];
+    messageDiv.textContent = "";
+    let i = 0;
+    const interval = setInterval(()=>{
+      messageDiv.textContent += msg.charAt(i);
+      i++;
+      if(i >= msg.length){
+        clearInterval(interval);
+        setTimeout(()=>{
+          index++;
+          showNextMessage();
+        }, 3000);
+      }
+    }, 50);
+  } else {
+    launchFloating('💛⭐✨❤️🎊');
+    setTimeout(()=>{
+      duaaSection.style.display="flex";
+      setTimeout(()=>{duaaSection.style.opacity=1;},100);
+      launchStars();
+      launchConfetti();
+    },2000);
+  }
+}
+
+function launchFloating(chars){
+  const emojis = chars.split('');
+  setInterval(()=>{
+    const elem = document.createElement('div');
+    elem.classList.add('floating');
+    elem.textContent = emojis[Math.floor(Math.random()*emojis.length)];
+    elem.style.left = Math.random()*window.innerWidth+"px";
+    elem.style.fontSize = (15 + Math.random()*25)+"px";
+    elem.style.animationDuration = (2+Math.random()*2)+"s";
+    document.body.appendChild(elem);
+    setTimeout(()=>elem.remove(),5000);
+  },200);
+}
+
+function launchStars(){
+  const starChars = ['✦','✧','✩','✪','✫','⭐'];
+  setInterval(()=>{
+    const star = document.createElement('div');
+    star.classList.add('star');
+    star.textContent = starChars[Math.floor(Math.random()*starChars.length)];
+    star.style.left = Math.random()*window.innerWidth+"px";
+    star.style.fontSize = (8+Math.random()*15)+"px";
+    star.style.animationDuration = (3 + Math.random()*3)+"s";
+    duaaSection.appendChild(star);
+    setTimeout(()=>star.remove(),7000);
+  },250);
+}
+
+function launchConfetti(){
+  const colors=['#ff0','#f0f','#0ff','#0f0','#f00','#ff69b4'];
+  setInterval(()=>{
+    const conf=document.createElement('div');
+    conf.classList.add('confetti');
+    conf.style.left=Math.random()*window.innerWidth+'px';
+    conf.style.backgroundColor=colors[Math.floor(Math.random()*colors.length)];
+    conf.style.animationDuration=(3+Math.random()*2)+'s';
+    duaaSection.appendChild(conf);
+    setTimeout(()=>conf.remove(),5000);
+  },150);
+}
+
+// Love Trails
+document.addEventListener('touchmove', createLoveTrail);
+document.addEventListener('touchstart', createLoveTrail);
+document.addEventListener('click', e => createLoveTrail({ touches: [{ clientX: e.clientX, clientY: e.clientY }] }));
+
+function createLoveTrail(e){
+  const touch = e.touches ? e.touches[0] : e;
+  const heart = document.createElement('div');
+  heart.className = 'loveTrail';
+  heart.textContent = '💛';
+  heart.style.left = (touch.clientX - 12) + 'px';
+  heart.style.top = (touch.clientY - 12) + 'px';
+  document.body.appendChild(heart);
+  setTimeout(() => heart.remove(), 3000);
+}
+
+// Sparkles
+document.addEventListener('touchmove',e=>{
+  const touch=e.touches[0];
+  const sparkle=document.createElement('div');
+  sparkle.className='sparkle';
+  sparkle.style.left=(touch.clientX-3)+'px';
+  sparkle.style.top=(touch.clientY-3)+'px';
+  document.body.appendChild(sparkle);
+  setTimeout(()=>sparkle.remove(),800);
+});
+
+// Start Button Click
+startButton.addEventListener('click', ()=>{
+  dhunAudio.play();
+  startScreen.style.display='none';
+  launchFloating('💛⭐✨❤️🎊');
+  launchStars();
+  launchConfetti();
+  showNextMessage();
+});
+</script>
+</body>
+</html>
